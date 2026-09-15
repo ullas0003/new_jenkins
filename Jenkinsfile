@@ -1,40 +1,46 @@
+def stage1Status = ''
 pipeline {
     agent any
 
     stages {
         stage('STAGE1') {
             steps {
-                sh '''
-                   sleep 10
-                '''
+                script {
+                    try {
+                        sh '''
+                           sleep 10
+                               '''
+                    }catch(Exception e){
+                        echo "Caught exception: ${e.message}"
+                        single1Status = 'FAILED'
+                    }
+                }
+                
             }
         }
          stage('STAGE2') {
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                    sh '''
-                   exit 1
-                '''
+            when{
+                expression{
+                    stage1Status == 'SUCCESS'
                 }
-                
             }
+            steps {
+                   echo "stage1 is success"
+                }
         }
          stage('STAGE3') {
+           when{
+                expression{
+                    stage1Status == 'FAILED'
+                }
+            }
             steps {
                 script{
-                    try{
-                         sh '''
-                   exit 1
-                '''
-                    } catch(Exception e) {
-                        echo "Caght an Exception: ${e.message}"
-                        currentBuild.result = 'SUCCESS'
-                    }finally{
-                        echo "Cleaning up ...."
+                    steps{
+                     echo "stage1 is Failed"
                     }
-                   
                 }
-                
+                   
             }
         }
          stage('STAGE4') {
