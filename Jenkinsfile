@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script{
                     try{
-                         sh '''
+                         exit 1
                    sleep 5
                 '''
                     } catch(Exception e) {
