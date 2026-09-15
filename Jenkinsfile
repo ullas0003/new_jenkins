@@ -11,8 +11,8 @@ pipeline {
             }
             steps {
                 sh '''
-                    echo APP - $APP
-                    echo $BRANCH
+                    echo "APP - $APP"
+                    echo "$BRANCH"
                     sleep 10
                 '''
             }
