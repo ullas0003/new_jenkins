@@ -1,49 +1,33 @@
 pipeline {
     agent any
 
-    environment {
-        BRANCH = 'main'
-    }
-
     stages {
         stage('STAGE1') {
-            environment {
-                APP = 'frontend'
-            }
             steps {
                 sh '''
-                    echo APP - $APP 
-                    echo BRANCH - $BRANCH
-                    sleep 5
+                   exit 1
                 '''
             }
         }
-
-        stage('STAGE2') {
-          
+         stage('STAGE2') {
             steps {
                 sh '''
-                    echo APP - $APP 
-                    echo BRANCH - $BRANCH
-                    sleep 10
-                    ls -lrt
+                   sleep 5
                 '''
-
-                echo "${env.BRANCH}"
             }
         }
-
-        stage('STAGE3') {
+         stage('STAGE3') {
             steps {
-                echo "This is Stage3"
-                sh 'sleep 5'
+                sh '''
+                   sleep 5
+                '''
             }
         }
-
-        stage('STAGE4') {
+         stage('STAGE4') {
             steps {
-                 sh 'echo THis is STAGE4'
-                 sh 'sleep 5'
+                sh '''
+                   sleep 5
+                '''
             }
         }
     }
