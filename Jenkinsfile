@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('STAGE1') {
             when {
-                branch 'origin/main'   // ✅ only runs if branch is "main"
+                expression {
+                env.GIT_BRANCH == 'origin/main'   // ✅ only runs if branch is "main"
+            }
             }
             steps {
                 echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
