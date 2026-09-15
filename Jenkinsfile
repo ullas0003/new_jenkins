@@ -1,19 +1,16 @@
-pipeline{
-agent any
-
+pipeline {
+    agent any
     stages {
         stage('STAGE1') {
-            when{
-                branch 'main'
+            when {
+                branch 'main'   // ✅ only runs if branch is "main"
             }
             steps {
-                echo "${env.BUILD_NUMBER}"
-                echo "${env.JOB_NAME}"
-                echo "${env.GIT_BRANCH}"
-                echo "${env.GIT_URL}"
+                echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+                echo "JOB_NAME: ${env.JOB_NAME}"
+                echo "GIT_BRANCH: ${env.GIT_BRANCH}"
+                echo "GIT_URL: ${env.GIT_URL}"
             }
         }
-         
-         
     }
 }
