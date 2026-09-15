@@ -2,9 +2,7 @@ pipeline {
     agent any
     stages {
         stage('STAGE1') {
-            when {
-                branch 'main'   // ✅ only runs if branch is "main"
-            }
+            
             steps {
                 echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
                 echo "JOB_NAME: ${env.JOB_NAME}"
