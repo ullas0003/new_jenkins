@@ -34,14 +34,14 @@ pipeline {
                     stage1Status == 'FAILED'
                 }
             }
-            steps {
+           
                 
                     steps{
                      echo "stage1 is Failed"
                     }
                 
                    
-            }
+            
         }
          
     }
