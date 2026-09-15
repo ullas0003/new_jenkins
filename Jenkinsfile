@@ -8,7 +8,7 @@ pipeline {
                 script {
                     try {
                         sh '''
-                           sleep 10
+                           exit 1
                                '''
                     }catch(Exception e){
                         echo "Caught exception: ${e.message}"
