@@ -6,7 +6,9 @@ pipeline {
    }
     stages {
         stage('STAGE1') {
-            APP = "frontend"
+            environment{
+                APP = 'frontend'
+            }
             steps {
                 sh '''
                     echo APP - $APP
