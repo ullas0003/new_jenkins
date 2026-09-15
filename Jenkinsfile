@@ -2,7 +2,7 @@ pipeline {
    agent any
     parameters {
      string defaultValue: 'main', description: 'Provide the branch to build and deploy', name: 'BRANCH'
-     string description: 'Provide the branch to build and deploy', name: 'NAME'
+     choice choices: ['DEV', 'QA', 'PRE-PROD', 'PROD'], description: 'Choose env to deploy', name: 'ENVIORNMENR'
       }
     stages {
         stage('STAGE1') {
