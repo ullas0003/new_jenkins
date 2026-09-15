@@ -7,7 +7,9 @@ agent any
                 branch 'main'
             }
             steps {
-                
+                sh '''
+                    git branch
+                    '''
                 echo "This is when example"
             }
         }
