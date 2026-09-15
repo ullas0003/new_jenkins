@@ -1,9 +1,8 @@
 pipeline {
-    agent {
-        label 'agent-5'
-    }
+   agent none
     stages {
         stage('STAGE1') {
+            agent any
             steps {
                 sh '''
                     ls -ltr
@@ -12,6 +11,9 @@ pipeline {
             }
         }
         stage('STAGE2') {
+             agent {
+        label 'agent-1'
+    }
             steps {
                 sh '''
                     pwd
@@ -21,11 +23,15 @@ pipeline {
             }
         }
         stage('STAGE3') {
+             agent {
+                  label 'agent-2'
+                   }
             steps {
                 echo 'This is STAGE3'
             }
         }
         stage('STAGE4') {
+            agent any
             steps {
                 sh 'echo This is STAGE4'
             }
