@@ -1,11 +1,14 @@
 pipeline {
     agent {
-        label 'agent-1'
+        label 'agent-5'
     }
     stages {
         stage('STAGE1') {
             steps {
-                sh 'ls -ltr'
+                sh '''
+                    ls -ltr
+                    sleep 10
+                '''
             }
         }
         stage('STAGE2') {
