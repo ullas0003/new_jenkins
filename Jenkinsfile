@@ -35,20 +35,14 @@ pipeline {
                 }
             }
             steps {
-                script{
+                
                     steps{
                      echo "stage1 is Failed"
                     }
-                }
+                
                    
             }
         }
-         stage('STAGE4') {
-            steps {
-                sh '''
-                   sleep 5
-                '''
-            }
-        }
+         
     }
 }
