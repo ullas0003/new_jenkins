@@ -3,6 +3,7 @@ pipeline {
     parameters {
      string defaultValue: 'main', description: 'Provide the branch to build and deploy', name: 'BRANCH'
      choice choices: ['DEV', 'QA', 'PRE-PROD', 'PROD'], description: 'Choose env to deploy', name: 'ENVIORNMENR'
+      booleanParam defaultValue: true, description: 'Un checked this to actully deploy', name: 'DRY-RUN'
       }
     stages {
         stage('STAGE1') {
