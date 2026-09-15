@@ -23,8 +23,8 @@ pipeline {
             steps {
                 script{
                     try{
-                         exit 1
-                   sleep 5
+                         sh '''
+                   exit 1
                 '''
                     } catch(Exception e) {
                         echo "Caght an Exception: ${e.message}"
