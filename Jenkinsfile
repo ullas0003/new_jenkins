@@ -21,9 +21,20 @@ pipeline {
         }
          stage('STAGE3') {
             steps {
-                sh '''
+                script{
+                    try{
+                         sh '''
                    sleep 5
                 '''
+                    } catch(Exception e) {
+                        echo "Caght an Exception: ${e.message}"
+                        currentBuild.result = 'SUCCESS'
+                    }finally{
+                        echo "Cleaning up ...."
+                    }
+                   
+                }
+                
             }
         }
          stage('STAGE4') {
